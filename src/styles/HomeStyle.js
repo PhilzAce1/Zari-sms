@@ -1,8 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import BackImagePic from '../assets/images/landingbackimage.png';
 export const Header = styled.h1`
   width: 100%;
-  @media (max-width: 500px) {
+  .desktop_hidden {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    .desktop_hidden {
+      display: block;
+    }
+    .mobile_hidden {
+      display: none;
+    }
+    img {
+      transform: scale(0.5);
+    }
   }
 `;
 export const NavList = styled.ul`
@@ -12,10 +24,20 @@ export const NavList = styled.ul`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media (max-width: 600px) {
+    ${(props) =>
+      props.mobileNav &&
+      css`
+        height: 100%;
+        align-items: flex-start;
+        flex-flow: column nowrap;
+      `};
+  }
 `;
 export const NavItem = styled.li`
   font-size: 1.3rem;
   font-weight: 500;
+  color: black;
 `;
 
 export const BackImage = styled.div`
@@ -52,6 +74,15 @@ export const HomeCard = styled.div`
   width: 130px;
   background: #5c3d67;
   margin: 40px;
+  @media (max-width: 600px) {
+    margin: 5px;
+    font-size: 0.8rem;
+    img {
+      width: 40%;
+      height: auto;
+      margin-bottom: 4px;
+    }
+  }
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -103,6 +134,9 @@ export const WhyChooseUsCard = styled.div`
   flex-flow: column nowrap;
   justify-content: space-around;
   box-shadow: 0 10px 14px 0px rgba(0, 0, 0, 0.5);
+  @media (max-width: 600px) {
+    flex-basis: 100%;
+  }
   header {
     font-size: 1.2rem;
     margin-left: 5%;
@@ -124,6 +158,8 @@ export const Footer = styled.div`
   align-items: center;
   color: #5c3d67;
   font-weight: bold;
+  padding: 30px;
+
   p {
     font-size: 1.2rem;
     margin: 1.3% 0;
@@ -162,7 +198,6 @@ export const Footer = styled.div`
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    padding: 30px;
     justify-content: space-between;
     font-size: 1.2rem;
     font-weight: bolder;

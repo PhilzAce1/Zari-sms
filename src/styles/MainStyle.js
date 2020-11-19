@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import BackImagePic from '../assets/images/navbackimage.jpg';
 import MainBackImage from '../assets/images/backimage.png';
 export const MainContainer = styled.div`
@@ -6,6 +6,10 @@ export const MainContainer = styled.div`
   width: 100%;
   overflow: hidden;
   display: flex;
+
+  .ant-drawer-wrapper-body .ant-drawer-body {
+    padding: 0 !important;
+  }
 `;
 export const MainBody = styled.div`
   height: 100%;
@@ -20,6 +24,9 @@ export const MainBody = styled.div`
   background-position-y: bottom;
   background-repeat: no-repeat;
   background-size: 70% 80%;
+  .ant-drawer-wrapper-body .ant-drawer-body {
+    padding: 0px !important;
+  }
 `;
 export const Nav = styled.nav`
   height: 100%;
@@ -45,10 +52,20 @@ export const Nav = styled.nav`
   }
   a {
     width: 100%;
+    padding: 15px;
     padding-left: 20%;
     color: white;
     font-size: 1.3rem;
     font-weight: bolder;
+  }
+  @media (max-width: 600px) {
+    ${(props) =>
+      props.desktopOnly &&
+      css`
+        display: none;
+        width: 100%;
+      `}
+    width:100%
   }
 `;
 export const MainBodyNav = styled.div`
@@ -86,6 +103,12 @@ export const SendMessageFormContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  ${(props) =>
+    props.sentSMS &&
+    css`
+      overflow-y: auto;
+      height: 80%;
+    `}
   input {
     margin-left: 5px;
     background: transparent;
@@ -105,6 +128,13 @@ export const SendMessageFormContainer = styled.div`
 
     img {
     }
+  }
+
+  @media (max-width: 600px) {
+    height: 80%;
+    padding-bottom: 20%;
+    width: 100%;
+    overflow: auto;
   }
   form {
     display: flex;
@@ -145,6 +175,19 @@ export const AllInputContainer = styled.div`
   display: flex;
   width: 100%;
   height: 45vh;
+  ${(props) =>
+    props.sentSMS &&
+    css`
+      padding: 0 10%;
+      height: 40vh;
+      box-shadow: 1px 20px 10px 10px rgba(0, 00, 0, 0.2);
+      border-bottom-right-radius: 10%;
+    `}
+  @media(max-width:600px) {
+    flex-flow: column;
+    height: 100vh;
+    overflow: auto;
+  }
   justify-content: space-around;
 `;
 export const InputContainer = styled.div``;
@@ -153,12 +196,26 @@ export const TextAreaContainer = styled.div`
   box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.6);
   height: 80%;
   width: 40%;
+  @media (max-width: 600px) {
+    width: 100%;
+    box-shadow: -10px 10px 10px rgba(0, 0, 0, 0);
+  }
   padding: 20px;
   margin-top: 30px;
+  ${(props) =>
+    props.sentSMS &&
+    css`
+      padding: 15px;
+    `}
   border-radius: 15px;
   textarea {
     height: 25vh !important;
     border-radius: 15px;
+    ${(props) =>
+      props.sentSMS &&
+      css`
+        height: 20vh !important;
+      `}
   }
   textarea::placeholder {
     font-size: 1.5rem;
@@ -166,4 +223,24 @@ export const TextAreaContainer = styled.div`
     padding-top: 10%;
     padding-left: 15%;
   }
+`;
+
+export const BuySMSUnitContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 90%;
+  justify-content: center;
+`;
+export const BuySMSUnitButton = styled.button`
+  width: 500px;
+  height: 100px;
+  background: ${(props) => props.bg};
+  font-size: 1.8rem;
+  color: white;
+  border: 0;
+  font-weight: bolder;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.4);
 `;

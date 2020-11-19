@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav } from '../styles/MainStyle';
 import { NavLink } from 'react-router-dom';
 
-export default function MainNav(props) {
+export default function MainNav({ desktopOnly }) {
   const NavArr = [
     {
       link: '/sendmessage',
@@ -18,7 +18,7 @@ export default function MainNav(props) {
     },
     {
       link: '/phonebook',
-      text: 'Send SMS',
+      text: 'Phonebook',
     },
     {
       link: '/buysmsunit',
@@ -34,5 +34,9 @@ export default function MainNav(props) {
       {text}
     </NavLink>
   ));
-  return <Nav>{mapLink}</Nav>;
+  if (desktopOnly) {
+    return <Nav desktopOnly>{mapLink}</Nav>;
+  } else {
+    return <Nav>{mapLink}</Nav>;
+  }
 }
