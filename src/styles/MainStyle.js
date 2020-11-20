@@ -76,6 +76,11 @@ export const MainBodyNav = styled.div`
   flex-flow: row nowrap;
   justify-content: flex-end;
   align-items: center;
+  @media (max-width: 600px) {
+    justify-content: space-between;
+    flex-flow: row-reverse nowrap;
+    padding: 10px;
+  }
   p {
     margin-right: 4%;
     font-size: 1.5rem;
@@ -85,10 +90,17 @@ export const MainBodyNav = styled.div`
     justify-content: flex-end;
     align-items: center;
     margin-top: 15px;
+    @media (max-width: 600px) {
+      font-size: 1rem;
+    }
   }
   img {
     height: 80%;
     /* margin-right: 1%; */
+    @media (max-width: 600px) {
+      max-width: 100px;
+      height: auto;
+    }
   }
 `;
 export const CheckboxContainer = styled.div`
@@ -109,6 +121,17 @@ export const SendMessageFormContainer = styled.div`
       overflow-y: auto;
       height: 80%;
     `}
+  @media (max-width: 600px) {
+    padding-left: 20px;
+    box-shadow: 0 0 0 red;
+    ${(props) =>
+      props.sentSMS &&
+      css`
+        overflow-y: auto;
+        height: 100%;
+      `}
+  }
+
   input {
     margin-left: 5px;
     background: transparent;
@@ -125,15 +148,18 @@ export const SendMessageFormContainer = styled.div`
     margin-top: 15%;
     background: transparent;
     width: 400px;
+    @media (max-width: 600px) {
+      width: 80%;
+    }
 
     img {
     }
   }
 
   @media (max-width: 600px) {
-    height: 80%;
+    height: 85%;
     padding-bottom: 20%;
-    width: 100%;
+    width: 95vw;
     overflow: auto;
   }
   form {
@@ -141,6 +167,9 @@ export const SendMessageFormContainer = styled.div`
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
     p {
       color: green;
       font-size: 1rem;
@@ -167,6 +196,7 @@ export const SendMessageFormContainer = styled.div`
     font-size: 1.4rem;
     font-weight: 800;
     position: absolute;
+
     top: -100px;
     right: 0;
   }
@@ -187,6 +217,13 @@ export const AllInputContainer = styled.div`
     flex-flow: column;
     height: 100vh;
     overflow: auto;
+    ${(props) =>
+      props.sentSMS &&
+      css`
+        min-height: 80vh;
+        border-radius: 0;
+        box-shadow: 0 0 0 red;
+      `}
   }
   justify-content: space-around;
 `;

@@ -68,6 +68,9 @@ export const InnerFormContainer = styled.div`
     color: white;
     font-size: 1.7rem;
   }
+  input:focus {
+    color: black;
+  }
   @media (max-width: 600px) {
     width: 100%;
   }
