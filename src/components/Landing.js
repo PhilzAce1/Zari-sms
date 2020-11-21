@@ -30,6 +30,10 @@ function Landing(props) {
         </div>
         <p>Smooth</p>
         <p>Experience</p>
+        <div className="side_trapezio">
+          <div className="left"></div>
+          <div className="right"></div>
+        </div>
       </BackImage>
       <CardList>{cards}</CardList>
       <ImageSection>

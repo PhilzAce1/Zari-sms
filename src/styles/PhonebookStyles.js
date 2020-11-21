@@ -10,8 +10,10 @@ export const PhoneBookContainer = styled.div`
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
   justify-content: space-around;
   @media (max-width: 600px) {
-    align-items: column nowrap;
-    height: auto;
+    flex-flow: column nowrap;
+    width: 100vw;
+    overflow-y: auto;
+    height: 100vh;
   }
   form {
     height: 100%;
@@ -59,8 +61,14 @@ export const PhoneBookGroupContainer = styled.div`
   padding: 3%;
   box-shadow: 0 0 30px 10px rgba(00, 0, 0, 0.3);
   background: white;
+  color: #5c3d67;
+  font-size: 1.5rem;
+  font-weight: 600;
+
   @media (max-width: 600px) {
     flex-basis: 100%;
+    height: 100%;
+    margin-top: 30px;
   }
 `;
 export const PhonebookFormButton = styled.button``;

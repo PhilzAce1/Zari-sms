@@ -9,7 +9,7 @@ import EmailIcon from '../assets/images/signin_message.PNG';
 import { Form, Input } from 'antd';
 import { login } from '../util/api/auth';
 import { useGlobalDispatchContext } from '../context/globalContext';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 const { Item } = Form;
 
 function Login() {
@@ -67,6 +67,15 @@ function Login() {
           </InnerFormContainer>
         </FormContainer>
         <button type="submit">SIGN IN</button>
+        Or{' '}
+        <Link
+          style={{
+            fontSize: '1.2rem',
+          }}
+          to="/signup"
+        >
+          Login
+        </Link>
       </Form>
     </AuthContainer>
   );

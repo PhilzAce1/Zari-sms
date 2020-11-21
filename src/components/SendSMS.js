@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Form, Input, Checkbox } from 'antd';
 import {
   SendMessageFormContainer,
@@ -11,15 +11,23 @@ import Warning from '../assets/images/warning.PNG';
 import UserNameProfile from '../assets/images/username_profile.PNG';
 import PeopleImage from '../assets/images/user_phonenumber.PNG';
 import PlusSign from '../assets/images/plus_sign.PNG';
+import { sendMail } from '../util/api/auth';
+import { GlobalStateContext } from '../context/globalContext';
 const { TextArea } = Input;
 
 function SendSMS(props) {
+  const globalState = useContext(GlobalStateContext);
+  const [form] = Form.useForm();
+  function onSubmitSuccess() {
+    form.resetFields();
+  }
   function onFinish(values) {
-    console.log(values);
+    sendMail(values, onSubmitSuccess, globalState.user.token);
   }
   return (
     <SendMessageFormContainer>
       <Form
+        form={form}
         name="send_message_form"
         className="send_message_form"
         onFinish={onFinish}
@@ -30,7 +38,7 @@ function SendSMS(props) {
         <AllInputContainer>
           <InputContainer>
             <Form.Item
-              name="send_name"
+              name="sender"
               rules={[
                 {
                   type: 'string',
@@ -49,12 +57,8 @@ function SendSMS(props) {
               />
             </Form.Item>
             <Form.Item
-              name="send_name"
+              name="destinations"
               rules={[
-                {
-                  type: 'email',
-                  message: 'The input is not a valid email ',
-                },
                 {
                   required: true,
                   message: 'Please Destination Email!',
@@ -71,7 +75,15 @@ function SendSMS(props) {
           </InputContainer>
 
           <TextAreaContainer>
-            <Form.Item>
+            <Form.Item
+              name="message"
+              rules={[
+                {
+                  required: true,
+                  message: 'Message content is required',
+                },
+              ]}
+            >
               <TextArea
                 showCount
                 maxLength={160}

@@ -30,7 +30,7 @@ function Phonebook(props) {
         </PhonebookFormContainer>
         <button type="submit">ADD RECORD</button>
       </Form>
-      <PhoneBookGroupContainer></PhoneBookGroupContainer>
+      <PhoneBookGroupContainer>Or Choose a group</PhoneBookGroupContainer>
     </PhoneBookContainer>
   );
 }

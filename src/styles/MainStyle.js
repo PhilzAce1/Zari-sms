@@ -245,7 +245,8 @@ export const TextAreaContainer = styled.div`
       padding: 15px;
     `}
   border-radius: 15px;
-  textarea {
+  textarea,
+  .textcontent {
     height: 25vh !important;
     border-radius: 15px;
     ${(props) =>
@@ -259,6 +260,20 @@ export const TextAreaContainer = styled.div`
     color: black;
     padding-top: 10%;
     padding-left: 15%;
+  }
+  .textcontent {
+    font-size: 1.5rem;
+    color: black;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    background: white;
+    .actions {
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
   }
 `;
 

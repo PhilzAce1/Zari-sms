@@ -65,6 +65,37 @@ export const BackImage = styled.div`
     left: 0;
     top: 100%;
   }
+
+  .side_trapezio {
+    width: 100%;
+    position: absolute;
+    padding: 0;
+    background: yellow;
+    div {
+      position: absolute;
+      border-bottom: 35px solid white;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      height: 0;
+      width: 125px;
+      margin: 0;
+      @media (max-width: 600px) {
+        border-bottom: 30px solid white;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        width: 100px;
+      }
+    }
+
+    .left {
+      transform: rotate(90deg) translateY(50px);
+      left: 0;
+    }
+    .right {
+      transform: rotate(-90deg) translateY(50px);
+      right: 0;
+    }
+  }
   & > * {
     margin: 0;
   }
